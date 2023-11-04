@@ -1,0 +1,559 @@
+.front-page
+    .header
+        min-height: calc(422px - 2.5em)
+        max-width: 1440px
+        width: 100%
+        margin: 0 auto
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: #3c4447
+
+        @media screen and (max-width: 370px)
+            min-height: 500px
+
+        .language-switcher-component
+            .dropdown-content
+                background-color: transparent
+                min-width: fit-content
+
+            ul.card
+                li
+                    padding: 0
+
+
+        .hero-text
+            z-index: 10
+            align-self: center
+            justify-self: center
+            padding-left: 1.5rem
+            padding-right: 1.5rem
+            text-align: left
+            max-width: 800px
+
+            @media screen and (max-width: 476px)
+                margin-top: 5em
+
+
+            @media screen and (min-width: 640px)
+                padding-left: 1.8rem
+                padding-right: 1.8rem
+
+
+            @media screen and (min-width: 1024px)
+                padding-left: 0
+                padding-right: 0
+
+
+            h1
+                margin-bottom: .5rem
+                font-family: $serif
+                font-size: 1.875rem
+                line-height: 1.15
+                color: white
+                font-weight: 400
+
+                @media screen and (min-width: 576px)
+                    font-size: 1.875rem
+
+
+                @media screen and (min-width: 640px)
+                    margin-bottom: 0
+                    font-size: 2.25rem
+
+
+                @media screen and (min-width: 1024px)
+                    font-size: 3.5rem
+
+
+            p.subtitle
+                margin: 0
+                font-size: 1.125rem
+                font-weight: 500
+                color: #fffc
+
+                @media screen and (min-width: 576px)
+                    font-size: 1.25rem
+
+
+                @media screen and (min-width: 768px)
+                    font-size: 1.5rem
+
+
+
+
+        .under-construction
+            display: none
+
+
+        .action-buttons
+            margin-top: 1.5em
+
+            a.download-link
+                margin-right: .75rem
+                margin-bottom: .75rem
+                display: inline-flex
+                align-items: center
+                border-radius: .375rem
+                background-color: $primary-light
+                padding: .625rem 1.25rem
+                text-align: center
+                font-size: .875rem
+                font-weight: 500
+                text-transform: uppercase
+                letter-spacing: .025em
+                color: rgb(255, 255, 255)
+                width: auto !important
+
+                @media screen and (max-width: 465px)
+                    padding: .5rem 0.75rem
+
+                svg
+                    width: 16px
+                    height: 16px
+
+                &:hover
+                    background-color: $primary-dark
+
+                &:focus
+                    outline: 2px solid transparent
+                    outline-offset: 2px
+
+
+            a.contact-link
+                margin-bottom: 0.75rem
+                display: inline-flex
+                align-items: center
+                border-radius: .375rem
+                background-color: $accent-light
+                padding: .625rem 1.25rem
+                text-align: center
+                font-size: .875rem
+                font-weight: 500
+                text-transform: uppercase
+                letter-spacing: .025em
+                color: white
+                border: 2px solid $accent-light
+                width: auto !important
+
+                @media screen and (max-width: 465px)
+                    padding: .5rem 0.75rem
+
+                svg
+                    width: 16px
+                    height: 16px
+
+                &:hover
+                    background-color: $accent-dark
+
+                &:focus
+                    outline: 2px solid transparent
+                    outline-offset: 2px
+
+
+        .header-image
+            max-width: 1420px
+            min-height: 422px
+            left: 10px
+            right: 10px
+            position: absolute
+            top: 1rem
+            bottom: 0
+            z-index: 0
+            display: flex
+            height: 100%
+            width: 100%
+            justify-content: center
+
+            @media screen and (max-width: 1439px)
+                width: auto
+                left: 10px
+                right: 10px
+
+
+        .brand
+            position: absolute
+            top: 1.75rem
+            left: 2rem
+            z-index: 10
+            display: flex
+            flex-direction: row
+            align-items: center
+            gap: .5rem
+
+            .name
+                font-family: $sans
+                font-size: 1rem
+                font-weight: 700
+                letter-spacing: .025em
+                --tw-text-opacity: 1
+                color: white
+
+                @media screen and (min-width: 640px)
+                    font-size: 1.25rem
+
+
+    .introduction
+        background-image: url(frontpage_module/images/bg-pattern-2.jpg)
+        min-height: 490px
+        display: flex
+        flex-direction: column
+        justify-content: center
+
+        & > .greeting-box
+            min-height: 150px
+            margin: auto 0
+            z-index: 10
+            display: flex
+            flex-direction: column
+            align-items: flex-start
+            justify-content: center
+            gap: 1.25rem
+            padding-bottom: 2.5rem
+            text-align: left
+
+            @media screen and (min-width: 640px)
+                flex-direction: row
+                align-items: center
+                padding-bottom: 0
+
+
+            img
+                width: 156px
+                margin-left: 1rem
+                height: 156px
+
+                @media screen and (min-width: 768px)
+                    margin-left: 0
+
+
+        .introduction-text
+            max-width: 630px
+            padding-left: 1.25rem
+            padding-right: 1.25rem
+
+            @media screen and (min-width: 768px)
+                padding-left: 0
+                padding-right: 0
+
+            div
+                color: #000c
+
+
+            h2
+                margin-top: 0
+                margin-bottom: 1.5rem
+                font-family: $exo
+                font-size: 1.5rem
+                font-weight: 800
+                line-height: 1.25
+                color: black
+
+                @media screen and (min-width: 640px)
+                    font-size: 2rem
+
+
+    /* Skills */
+
+
+    .skills
+        margin-bottom: 5em
+
+        @media screen and (min-width: 640px)
+            margin-bottom: 3em
+
+
+        h2.skills-title
+            margin-top: 0
+            margin-bottom: 2.5rem
+            font-family: $serif
+            font-size: 1.5rem
+            letter-spacing: .025em
+            color: white
+            font-weight: 400
+
+            @media screen and (min-width: 640px)
+                font-size: 2.25rem
+
+
+        .skill-box
+            max-width: 320px
+            width: 100%
+            min-height: 320px
+            height: 100%
+
+            @media screen and (max-width: 576px)
+                max-width: 100%
+
+
+            h3.box-heading
+                margin: 0
+                line-height: 64px
+                height: 4rem
+                width: 100%
+                border-bottom: 1px solid rgba(255,255,255,0.4)
+                padding-left: 2rem
+                text-align: left
+                font-family: $sans
+                font-size: 1.125rem
+                font-weight: 700
+                letter-spacing: .025em
+
+                @media screen and (min-width: 576px)
+                    font-size: 1.25rem
+
+
+        .skills-grid
+            max-width: 1020px
+            margin: 0 auto
+            display: grid
+            grid-template-columns: repeat(1, minmax(0, 1fr))
+            justify-items: center
+            -moz-column-gap: 1.25rem
+            column-gap: 1.25rem
+            row-gap: 2rem
+
+            @media screen and (min-width: 576px)
+                grid-template-columns: repeat(1, minmax(0, 1fr))
+
+
+            @media screen and (min-width: 640px)
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+
+
+            @media screen and (min-width: 768px)
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+
+
+            @media screen and (min-width: 1024px)
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+
+
+            @media screen and (max-width: 1023px)
+                max-width: 768px
+                margin-left: auto
+                margin-right: auto
+
+
+            @media screen and (max-width: 576px)
+                margin-left: 20px
+                margin-right: 20px
+
+            @media screen and (max-width: 410px)
+                margin-left: 0
+                margin-right: 0
+
+    /* Skills END */
+
+
+    /* Projects */
+
+
+    .projects
+        margin-bottom: 5rem
+
+        @media screen and (min-width: 640px)
+            margin-bottom: 3rem
+
+        .projects-image
+            position: absolute
+            top: 0
+            right: 0
+            left: 0
+            bottom: 0
+            z-index: 0
+            height: 100%
+            width: 100%
+
+
+        .projects-title
+            margin-top: 0
+            margin-bottom: 2.5rem
+            font-family: $serif
+            font-size: 1.5rem
+            letter-spacing: .025em
+            color: black
+            text-align: center
+            font-weight: 400
+
+            @media screen and (min-width: 640px)
+                font-size: 2.25rem
+
+
+        .projects-grid
+            max-width: 1165px
+            margin: 0 auto
+            z-index: 10
+            display: grid
+            grid-template-columns: repeat(1, minmax(0, 1fr))
+            justify-items: center
+            -moz-column-gap: 4rem
+            column-gap: 4rem
+            row-gap: 3rem
+
+            @media screen and (min-width: 1024px)
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+
+
+            @media screen and (max-width: 1280px)
+                margin-left: 1rem !important
+                margin-right: 1rem !important
+
+
+            .project
+                max-width: 550px
+                width: 100%
+                min-height: 550px
+                height: 100%
+                background-color: #fff
+                z-index: 10
+                display: flex
+                flex-direction: column
+                border-radius: .375rem
+
+                @media screen and (max-width: 576px)
+                    max-width: 100%
+
+
+                .card-header
+                    height: 225px
+
+                    > img
+                        height: 225px
+                        width: auto
+
+
+                .card-body
+                    min-height: 260px
+                    flex-grow: 1
+
+                    a
+                        color: $primary-light
+                        -webkit-text-decoration-line: underline
+                        text-decoration-line: underline
+
+                        &:hover
+                            color: $primary-dark
+
+
+                .card-footer
+                    min-height: 63px
+    /* Projects END */
+
+
+
+    /* Footer */
+
+
+
+    footer.footer
+        position: relative
+        display: flex
+        height: 4rem
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+        background-color: rgb(43, 55, 63)
+        padding-left: 1rem
+        padding-right: 1rem
+
+        a
+            height: 37px
+
+        @media screen and (min-width: 576px)
+            padding-left: 1.75rem
+            padding-right: 1.75rem
+
+
+        /* Footer actions */
+
+
+
+        .action-buttons-above-footer
+            text-align: center
+
+            nav
+                a.download-link
+                    margin-right: .75rem
+                    margin-bottom: .75rem
+                    display: inline-flex
+                    align-items: center
+                    border-radius: .375rem
+                    background-color: $primary-light
+                    padding: .625rem 1.25rem
+                    text-align: center
+                    font-size: .875rem
+                    font-weight: 500
+                    text-transform: uppercase
+                    letter-spacing: .025em
+                    color: white
+
+                    & > svg
+                        width: 16px !important
+                        height: 16px !important
+
+                    &:hover
+                        background-color: $primary-dark
+
+
+                    &:focus
+                        outline: 2px solid transparent
+                        outline-offset: 2px
+
+                a.contact-link
+                    margin-right: .5rem
+                    margin-bottom: .5rem
+                    display: inline-flex
+                    align-items: center
+                    border-radius: .375rem
+                    background-color: $accent-light
+                    padding: .625rem 1.25rem
+                    text-align: center
+                    font-size: .875rem
+                    font-weight: 500
+                    text-transform: uppercase
+                    letter-spacing: .025em
+                    --tw-text-opacity: 1
+                    color: white
+
+                    &:hover
+                        background-color: $accent-dark
+
+
+                    &:focus
+                        outline: 2px solid transparent
+                        outline-offset: 2px
+        /* Footer actions END */
+
+
+
+
+        #scroll-to-top
+            left: 50%
+            transform: translate(-50%)
+            position: absolute
+            top: -1rem
+            display: flex
+            margin: 0 auto
+            align-items: center
+            justify-content: center
+
+            &:hover, &:focus
+                background-color: transparent
+/* Footer END */
+
+
+.black-body
+    background-color: #000
+    color: #fff
+
+
+.frontpage-content
+    background-color: #3c4447
+    margin: 0 auto
+    max-width: 1440px
+    width: 100%
+
+
+    /* site-bg rgb(244, 245, 247) background-color: #3c4447; */
