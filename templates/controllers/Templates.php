@@ -1,9 +1,9 @@
 <?php
 class Templates extends Trongate {
 
-/*    function frontpage($data) {
+    function frontpage($data) {
         load('frontpage', $data);
-    }*/
+    }
 
     function public($data) {
         load('public', $data);
