@@ -1,0 +1,15 @@
+{
+    "SetLanguage": {
+        "url_segments": "localization/test",
+        "request_type": "POST",
+        "description": "Just a test...",
+        "enableParams": true,
+        "required_fields": [
+            {
+                "name": "language_code",
+                "label": "Language code (like 'en-gb', 'hu-hu')"
+            }
+        ],
+        "authorization": "*"
+    }
+}
