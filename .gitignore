@@ -2,8 +2,4 @@
 \.phpintel/
 .idea/
 .vscode/
-/helpers/helpers.php
-/modules/frontpage/
-/modules/localization/
-/templates/views/frontpage.php
 /config/
