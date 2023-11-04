@@ -150,5 +150,5 @@ foreach (TRONGATE_HELPERS as $tg_helper) {
 }
 
 // General helper functions
-//require_once '../helpers/helpers.php';
+require_once '../helpers/helpers.php';
 
