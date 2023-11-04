@@ -1,0 +1,35 @@
+{
+  "name": "clean",
+  "version": "1.0.0",
+  "description": "Clean CSS and JS library",
+  "main": "index.js",
+  "dependencies": {
+    "@alpinejs/focus": "^3.12.2",
+    "alpinejs": "^3.11.1",
+    "gulp-print": "^5.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gulácsi András",
+  "license": "no",
+  "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.4",
+    "@babel/register": "^7.21.0",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
+    "del": "^7.0.0",
+    "esbuild": "^0.17.19",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulplog": "^2.0.1",
+    "sass": "^1.62.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
