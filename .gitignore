@@ -2,6 +2,8 @@
 \.phpintel/
 .idea/
 .vscode/
-/config/
 /vendor/
 /modules/tinymce/
+/config/database-live.php
+/config/custom_routing-live.php
+/config/config-live.php
