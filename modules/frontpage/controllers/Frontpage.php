@@ -49,6 +49,8 @@ class Frontpage extends Trongate
         $data['phone_number']  = $this->front_service->get_phone_number();
         $data['github_link']   = $this->front_service->get_github_link();
 
+        $data['skills'] = $this->front_service->get_skills(get_language());
+        $data['projects'] = $this->front_service->get_projects(get_language());
 
         $this->template('frontpage', $data);
     }

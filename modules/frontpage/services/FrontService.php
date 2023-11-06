@@ -52,6 +52,13 @@ class FrontService extends Model {
     }
 
 
+    public function get_skills(string $language) {
+        return $this->get_where_custom('language', $language, '=', 'id', 'skills');
+    }
+
+    public function get_projects(string $language) {
+        return $this->get_where_custom('language', $language, '=', 'id', 'projects');
+    }
 
 
 }

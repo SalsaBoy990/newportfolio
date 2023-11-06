@@ -81,8 +81,6 @@
                     font-size: 1.5rem
 
 
-
-
         .under-construction
             display: none
 
@@ -257,6 +255,11 @@
     /* Skills */
 
 
+
+
+
+
+
     .skills
         margin-bottom: 5em
 
@@ -286,16 +289,20 @@
             @media screen and (max-width: 576px)
                 max-width: 100%
 
+            ul.list-disc
+                margin-top: 0
+
 
             h3.box-heading
                 margin: 0
                 line-height: 64px
                 height: 4rem
                 width: 100%
-                border-bottom: 1px solid rgba(255,255,255,0.4)
+                border-bottom: 1px solid rgba(255, 255, 255, 0.4)
                 padding-left: 2rem
                 text-align: left
-                font-family: $sans
+                font-family: $exo
+                color: white
                 font-size: 1.125rem
                 font-weight: 700
                 letter-spacing: .025em
@@ -350,6 +357,11 @@
     /* Projects */
 
 
+
+
+
+
+
     .projects
         margin-bottom: 5rem
 
@@ -400,6 +412,10 @@
                 margin-left: 1rem !important
                 margin-right: 1rem !important
 
+            @media screen and (max-width: 576px)
+                margin-left: 0 !important
+                margin-right: 0 !important
+
 
             .project
                 max-width: 550px
@@ -417,11 +433,26 @@
 
 
                 .card-header
-                    height: 225px
+                    min-height: 225px
 
                     > img
+                        object-fit: cover
                         height: 225px
                         width: auto
+
+                    .project-description
+                        padding-left: 1rem
+
+                        h3
+                            font-family: $exo
+                            color: white
+                            margin-bottom: 0
+
+                        p
+                            margin-top: 0
+
+                        .text-white87pc
+                            color: rgba(255, 255, 255, 0.87)
 
 
                 .card-body
@@ -438,12 +469,102 @@
 
 
                 .card-footer
-                    min-height: 63px
+                    background-color: white
+                    min-height: 83px
+                    display: flex
+                    align-items: center
+                    padding-left: 1em
+                    padding-right: 1em
+
+                    nav
+                        display: flex
+                        flex-direction: row
+                        flex-wrap: wrap
+                        column-gap: 1em
+                        row-gap: 0.5em
     /* Projects END */
 
 
+    /* Footer actions */
+
+
+
+
+
+
+
+
+    .action-buttons-above-footer
+        text-align: center
+
+        a.download-link
+            text-decoration: none
+            margin-right: .75rem
+            margin-bottom: .75rem
+            display: inline-flex
+            align-items: center
+            border-radius: .375rem
+            background-color: $primary-light
+            padding: .625rem 1.25rem
+            text-align: center
+            font-size: .875rem
+            font-weight: 500
+            text-transform: uppercase
+            letter-spacing: .025em
+            color: rgb(255, 255, 255)
+            width: auto !important
+
+            @media screen and (max-width: 465px)
+                padding: .5rem 0.75rem
+
+            svg
+                width: 16px
+                height: 16px
+
+            &:hover
+                background-color: $primary-dark
+
+            &:focus
+                outline: 2px solid transparent
+                outline-offset: 2px
+
+
+        a.contact-link
+            text-decoration: none
+            margin-bottom: 0.75rem
+            display: inline-flex
+            align-items: center
+            border-radius: .375rem
+            background-color: $accent-light
+            padding: .625rem 1.25rem
+            text-align: center
+            font-size: .875rem
+            font-weight: 500
+            text-transform: uppercase
+            letter-spacing: .025em
+            color: white
+            border: 2px solid $accent-light
+            width: auto !important
+
+            @media screen and (max-width: 465px)
+                padding: .5rem 0.75rem
+
+            svg
+                width: 16px
+                height: 16px
+
+            &:hover
+                background-color: $accent-dark
+
+            &:focus
+                outline: 2px solid transparent
+                outline-offset: 2px
+    /* Footer actions END */
+
 
     /* Footer */
+
+
 
 
 
@@ -464,70 +585,6 @@
         @media screen and (min-width: 576px)
             padding-left: 1.75rem
             padding-right: 1.75rem
-
-
-        /* Footer actions */
-
-
-
-        .action-buttons-above-footer
-            text-align: center
-
-            nav
-                a.download-link
-                    margin-right: .75rem
-                    margin-bottom: .75rem
-                    display: inline-flex
-                    align-items: center
-                    border-radius: .375rem
-                    background-color: $primary-light
-                    padding: .625rem 1.25rem
-                    text-align: center
-                    font-size: .875rem
-                    font-weight: 500
-                    text-transform: uppercase
-                    letter-spacing: .025em
-                    color: white
-
-                    & > svg
-                        width: 16px !important
-                        height: 16px !important
-
-                    &:hover
-                        background-color: $primary-dark
-
-
-                    &:focus
-                        outline: 2px solid transparent
-                        outline-offset: 2px
-
-                a.contact-link
-                    margin-right: .5rem
-                    margin-bottom: .5rem
-                    display: inline-flex
-                    align-items: center
-                    border-radius: .375rem
-                    background-color: $accent-light
-                    padding: .625rem 1.25rem
-                    text-align: center
-                    font-size: .875rem
-                    font-weight: 500
-                    text-transform: uppercase
-                    letter-spacing: .025em
-                    --tw-text-opacity: 1
-                    color: white
-
-                    &:hover
-                        background-color: $accent-dark
-
-
-                    &:focus
-                        outline: 2px solid transparent
-                        outline-offset: 2px
-        /* Footer actions END */
-
-
-
 
         #scroll-to-top
             left: 50%
@@ -554,6 +611,24 @@
     margin: 0 auto
     max-width: 1440px
     width: 100%
+/* site-bg rgb(244, 245, 247) background-color: #3c4447; */
 
 
-    /* site-bg rgb(244, 245, 247) background-color: #3c4447; */
+.bg-main-800
+    background-color: #4F5B93
+
+.bg-grass-green
+    background-color: #88972D
+
+.bg-turquoise
+    background-color: #25758F
+
+.bg-brown
+    background-color: #9B6241
+
+.bg-main-400
+    background-color: #7C796D
+
+.bg-darkpurple
+    background-color: #863DC0
+

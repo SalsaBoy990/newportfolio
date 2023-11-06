@@ -108,7 +108,8 @@
     </div>
 
     <div class="header-image">
-        <img src="frontpage_module/images/header.jpg" class="object-cover" style="object-fit: cover" alt="darkblue illustration background">
+        <img src="frontpage_module/images/header.jpg" class="object-cover" style="object-fit: cover"
+             alt="darkblue illustration background">
     </div>
 
 </header><!-- Header END -->
@@ -145,38 +146,13 @@
 
 
     <div class="skills-grid">
-
         <!-- Skill list as grid -->
-        <div class="skill-box card green rounded shadow">
-            <h3 class="box-heading">Title</h3>
-            <div class="margin-left-2 margin-top-1 margin-right-1">Content</div>
-        </div>
-
-        <div class="skill-box card primary rounded shadow">
-            <h3 class="box-heading">Title 2</h3>
-            <div class="margin-left-2 margin-top-1 margin-right-1">Content 2</div>
-        </div>
-
-        <div class="skill-box card accent-dark rounded shadow">
-            <h3 class="box-heading">Title 3</h3>
-            <div class="margin-left-2 margin-top-1 margin-right-1">Content 3</div>
-        </div>
-
-        <div class="skill-box card red rounded shadow">
-            <h3 class="box-heading">Title 4</h3>
-            <div class="margin-left-2 margin-top-1 margin-right-1">Content 4</div>
-        </div>
-
-        <div class="skill-box card orange rounded shadow">
-            <h3 class="box-heading">Title 5</h3>
-            <div class="margin-left-2 margin-top-1 margin-right-1">Content 5</div>
-        </div>
-
-        <div class="skill-box card primary-dark rounded shadow">
-            <h3 class="box-heading">Title 6</h3>
-            <div class="margin-left-2 margin-top-1 margin-right-1">Content 6</div>
-        </div>
-
+        <?php foreach ($skills as $skill) { ?>
+            <div class="skill-box card rounded shadow <?= $skill->bg_color ?>">
+                <h3 class="box-heading"><?= $skill->title ?></h3>
+                <div class="margin-left-2 margin-top-1 margin-right-1"><?= $skill->content ?></div>
+            </div>
+        <?php } ?>
     </div>
 
 </section><!-- Skills END -->
@@ -195,73 +171,31 @@
     </div>
 
     <div class="projects-grid">
+        <?php foreach ($projects as $project) { ?>
+            <div class="project card">
+                <div class="card-header relative">
+                    <img class="object-cover round-top" src="<?= BASE_URL.$project->cover_image ?>" alt="Title">
+                    <div class="project-description absolute bottomleft">
+                        <h3>
+                            <?= $project->title ?>
+                        </h3>
+                        <p class="text-white87pc"> <?= $project->client ?></p>
+                    </div>
+                </div>
 
-        <div class="project">
-            <div class="card-header relative w-full">
-                <img class="object-cover rounded-t-md" src="#" alt="Title">
-                <div class="project-description absolute bottom-5 left-6">
-                    <h3 class="font-exo text-white text-xl sm:text-2xl font-bold">
-                        Title
-                    </h3>
-                    <p class="text-white87pc">Client</p>
+                <div class="card-body padding-1">
+                    <div class="text-black">
+                        <?= $project->content ?>
+                    </div>
+                </div>
+
+                <div class="card-footer round-bottom border-top" style="border-top-color:#ccc;">
+                    <div class="bar">
+                    <?= $project->links ?>
+                    </div>
                 </div>
             </div>
-
-            <div class="card-body px-6 py-6">
-                <div class="text-editor text-black-text">
-                    Content
-                </div>
-            </div>
-
-            <div class="card-footer border-t border-t-black-12pc flex justify-end">
-                Links...
-            </div>
-        </div>
-
-        <div class="project">
-            <div class="card-header relative w-full">
-                <img class="object-cover rounded-t-md" src="#" alt="Title">
-                <div class="project-description absolute bottom-5 left-6">
-                    <h3 class="font-exo text-white text-xl sm:text-2xl font-bold">
-                        Title 2
-                    </h3>
-                    <p class="text-white87pc">Client 2</p>
-                </div>
-            </div>
-
-            <div class="card-body px-6 py-6">
-                <div class="text-editor text-black-text">
-                    Content 2
-                </div>
-            </div>
-
-            <div class="card-footer border-t border-t-black-12pc flex justify-end">
-                Links...2
-            </div>
-        </div>
-
-        <div class="project">
-            <div class="card-header relative w-full">
-                <img class="object-cover rounded-t-md" src="#" alt="Title">
-                <div class="project-description absolute bottom-5 left-6">
-                    <h3 class="font-exo text-white text-xl sm:text-2xl font-bold">
-                        Title 3
-                    </h3>
-                    <p class="text-white87pc">Client 3</p>
-                </div>
-            </div>
-
-            <div class="card-body px-6 py-6">
-                <div class="text-editor text-black-text">
-                    Content 3
-                </div>
-            </div>
-
-            <div class="card-footer border-t border-t-black-12pc flex justify-end">
-                Links...3
-            </div>
-        </div>
-
+        <?php } ?>
     </div>
 
     <div class="projects-image">
@@ -274,8 +208,35 @@
 <!-- Main action buttons -->
 <div class="action-buttons-above-footer">
     <nav>
-        <a href="#" download class="download-link"><?= $text_download ?></a>
-        <a href="mailto:<?= $email_address ?>" class="contact-link"><?= $text_send ?></a>
+        <a href="#" download class="download-link">
+            <svg class="margin-right-0-5" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_672_923)">
+                    <path d="M17.4163 8.25H13.7497V2.75H8.24967V8.25H4.58301L10.9997 14.6667L17.4163 8.25ZM4.58301 16.5V18.3333H17.4163V16.5H4.58301Z"
+                          fill="white" fill-opacity="0.9"></path>
+                </g>
+                <defs>
+                    <clipPath id="clip0_672_923">
+                        <rect width="22" height="22" fill="white"></rect>
+                    </clipPath>
+                </defs>
+            </svg>
+            <span><?= $text_download ?></span>
+        </a>
+        <a href="mailto:<?= $email_address ?>" class="contact-link">
+            <svg class="margin-right-0-5" aria-hidden="true" focusable="false" viewBox="0 0 22 22" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_672_926)">
+                    <path d="M18.333 3.66667H3.66634C2.65801 3.66667 1.84217 4.49167 1.84217 5.5L1.83301 16.5C1.83301 17.5083 2.65801 18.3333 3.66634 18.3333H18.333C19.3413 18.3333 20.1663 17.5083 20.1663 16.5V5.5C20.1663 4.49167 19.3413 3.66667 18.333 3.66667ZM18.333 7.33333L10.9997 11.9167L3.66634 7.33333V5.5L10.9997 10.0833L18.333 5.5V7.33333Z"
+                          fill="white" fill-opacity="0.9"></path>
+                </g>
+                <defs>
+                    <clipPath id="clip0_672_926">
+                        <rect width="22" height="22" fill="white"></rect>
+                    </clipPath>
+                </defs>
+            </svg>
+            <span><?= $text_send ?></span>
+        </a>
     </nav>
 </div><!-- Main action buttons END -->
 
