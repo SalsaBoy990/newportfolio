@@ -1,0 +1,15 @@
+.admin-flag {
+    width: 24px;
+    height: auto;
+}
+
+.admin-cover-preview {
+    width: 300px;
+    height: auto;
+    margin-top: 1em;
+}
+
+.admin-image-fullwidth {
+    width: 100%;
+    height: auto;
+}
