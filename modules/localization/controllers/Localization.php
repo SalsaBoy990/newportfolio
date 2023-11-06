@@ -17,7 +17,7 @@ class Localization extends Trongate
     {
         settype($lang, 'string');
         setcookie('language', htmlspecialchars($lang), time() + (86400 * 30), "/");
-        redirect('frontpage/index');
+        redirect('');
     }
 
 
