@@ -180,6 +180,7 @@ class Admin_skills extends Trongate
             $this->validation_helper->set_rules('language', 'Language', 'required');
             $this->validation_helper->set_rules('content', 'Content', 'required|min_length[2]|max_length[2000]');
             $this->validation_helper->set_rules('bg_color', 'Bg. Color', 'required|min_length[2]|max_length[100]');
+            $this->validation_helper->set_rules('order', 'Order', 'required|integer');
             $this->validation_helper->set_rules('updated_at', 'Updated At', 'valid_datetimepicker_us');
             $this->validation_helper->set_rules('created_at', 'Created At', 'valid_datetimepicker_us');
 
@@ -347,6 +348,8 @@ class Admin_skills extends Trongate
 
         // purifier should sanitize this field! clean_up is null by default
         $data['content'] = post('content');
+
+        $data['order'] = post('order', true);
 
         $data['created_at'] = post('created_at', true);
 

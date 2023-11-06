@@ -19,6 +19,9 @@
         echo form_label('Background color');
         echo form_dropdown('bg_color', $colors, $bg_color ?? $default_color);
 
+        echo form_label('Order');
+        echo form_number('order', $order ?? 0);
+
         echo form_label('Created At <span>(optional)</span>');
         $attr = array("class" => "datetime-picker", "autocomplete" => "off", "placeholder" => "Select Created At");
         echo form_input('created_at', $created_at, $attr);
