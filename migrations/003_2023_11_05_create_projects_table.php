@@ -47,6 +47,6 @@ SQL
 
     public function down(): void
     {
-        $this->exec("DROP TABLE `skills`;");
+        $this->exec("DROP TABLE `projects`;");
     }
 };
