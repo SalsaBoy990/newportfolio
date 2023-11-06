@@ -149,6 +149,4 @@ foreach (TRONGATE_HELPERS as $tg_helper) {
     require_once 'tg_helpers/'.$tg_helper.'.php';
 }
 
-// General helper functions
-require_once '../helpers/helpers.php';
 
