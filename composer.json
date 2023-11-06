@@ -1,0 +1,14 @@
+{
+    "name": "gulacsi/portfolio",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Gulácsi András",
+            "email": "guland@protonmail.com"
+        }
+    ],
+    "require": {
+        "tinymce/tinymce": "6.3.1",
+        "ezyang/htmlpurifier": "4.16.0"
+    }
+}
