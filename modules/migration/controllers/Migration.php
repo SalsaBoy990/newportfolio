@@ -4,7 +4,6 @@ class Migration extends Trongate
 {
     const MIGRATIONS = 'migrations';
 
-
     public function __construct(?string $module_name = null)
     {
         if (strtolower(ENV) !== 'dev') {
@@ -18,7 +17,7 @@ class Migration extends Trongate
     /**
      * Migration runner
      *
-     * @param  string  $direction  = 'up'|'down'
+     * @param string $direction = 'up'|'down'
      *
      * @return void
      */
@@ -27,14 +26,14 @@ class Migration extends Trongate
         settype($direction, 'string');
 
         if ($direction === 'up') {
-            if ( ! $this->_is_table_exists('migrations')) {
+            if (!$this->_is_table_exists('migrations')) {
                 // Create the migrations table to store migration records
                 $this->_create_migrations_table();
             }
         }
 
         // Migration file list
-        $migrations = array_filter(glob(__DIR__.'/../../../migrations/*.php'));
+        $migrations = array_filter(glob(__DIR__ . '/../../../migrations/*.php'));
 
         if (sizeof($migrations) > 0) {
             foreach ($migrations as $migration) {
@@ -43,12 +42,12 @@ class Migration extends Trongate
                 $parts = explode('/', $migration);
 
                 if (isset($parts)) {
-                    $filename    = $parts[count($parts) - 1];
+                    $filename = $parts[count($parts) - 1];
                     $table_parts = explode('_', $filename);
-                    $table       = $table_parts[count($table_parts) - 2];
+                    $table = $table_parts[count($table_parts) - 2];
 
                     // Get the migration class
-                    $run = require_once(__DIR__.'/../../../migrations/'.$filename);
+                    $run = require_once(__DIR__ . '/../../../migrations/' . $filename);
 
                     try {
                         if ($direction === 'up') {
@@ -85,22 +84,29 @@ class Migration extends Trongate
     }
 
 
+    /**
+     * Check if table needs to be created (initially)
+     *
+     * @param string $table
+     * @return bool
+     */
     private function _is_table_exists(string $table): bool
     {
-        $sql  = "SHOW TABLES LIKE :table";
+        $sql = "SHOW TABLES LIKE :table";
         $rows = $this->model->query_bind($sql, ['table' => $table], 'array');
-        if ( ! isset($rows)) {
+        if (!isset($rows)) {
             return false;
         }
 
         return true;
     }
 
+
     /**
      * Insert migration record
      *
-     * @param  string  $filename
-     * @param  int  $is_processed
+     * @param string $filename
+     * @param int $is_processed
      *
      * @return void
      */
@@ -116,8 +122,8 @@ class Migration extends Trongate
     /**
      * Update migration record
      *
-     * @param  string  $filename
-     * @param  int  $is_processed
+     * @param string $filename
+     * @param int $is_processed
      *
      * @return void
      */
@@ -129,6 +135,11 @@ class Migration extends Trongate
     }
 
 
+    /**
+     * Creates the migrations table if it exists
+     *
+     * @return void
+     */
     private function _create_migrations_table(): void
     {
         $this->model->exec(
