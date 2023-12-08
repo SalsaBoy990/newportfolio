@@ -1,0 +1,9 @@
+{
+    "Generate": {
+        "url_segments": "password_generator/generate",
+        "request_type": "GET",
+        "description": "Generate safe password",
+        "enableParams": true,
+        "authorization":"*"
+    }
+}
