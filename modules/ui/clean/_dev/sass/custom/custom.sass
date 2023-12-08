@@ -1,0 +1,148 @@
+header
+    color: $white
+    padding: 4px 12px
+    background-color: $primary-dark
+    transition: all 250ms
+    box-shadow: rgba(0, 0, 0, 0.15) 0 6px 24px 0, rgba(0, 0, 0, 0.18) 0 0 0 1px
+
+    a
+        color: $white
+        text-transform: uppercase
+        font-size: 14px
+
+        &.active
+            font-weight: 700
+            text-decoration: underline
+
+        &:hover
+            color: $accent-light
+
+    .logo
+        a
+            text-transform: none
+            font-size: 14px
+
+    #hamburger-menu-button
+        margin: 0
+        width: 50px
+
+        .fa
+            margin: 0
+
+    button.darkmode-toggle
+        margin-top: 0
+
+#slide-nav
+    a:hover
+        text-decoration: underline
+
+    ul
+        li
+            a
+                i
+                    width: 1.5em
+                    text-align: center
+                    margin-right: 0.5em
+
+
+#header-sm,
+#header-lg
+    .logo
+        display: flex
+
+        a
+            display: flex
+            padding: .5em 0
+            align-items: center
+            column-gap: 0.25em
+            font-size: $fs-14
+
+            span
+                font-weight: 700
+
+            img
+                height: 36px
+                width: auto
+
+
+#slide-nav
+
+    @media screen and (max-width: 860px)
+        ul
+            li
+                .darkmode-toggle
+                    display: none
+
+
+#header-sm
+    .button-group
+        align-items: center
+
+        button
+            width: auto
+
+#main-menu-offcanvas-toggle
+    margin: 0
+    padding: 0.5em
+    width: 40px
+
+    @media screen and (min-width: 881px)
+        display: none
+
+#main-menu
+    a.active, a.router-link-active
+        color: $black
+        font-weight: 700
+
+.sidenav
+    height: 100%
+    width: 0
+    position: fixed
+    z-index: 4
+    top: 0
+    left: 0
+    background-color: $gray-20
+    overflow-x: hidden
+    transition: 0.5s
+    padding: 0
+    box-shadow: 4px 0 6px -4px #666
+
+    @media screen and (max-height: 550px)
+        padding-top: 1em
+
+
+    #close-sidenav-button
+        text-decoration: none
+        position: absolute
+        top: 0
+        right: 12px
+        font-size: 24px
+
+        &:hover, &:focus
+            color: lightblue
+
+    #mobile-menu
+        padding: 60px 0.5em 0.5em
+
+        #main-menu
+            display: flex
+            row-gap: 1em
+            flex-direction: column
+            align-items: flex-start
+
+            a
+                &.active
+                    font-weight: 700
+
+                i
+                    margin-right: 4px
+
+            .dropdown-content
+                display: flex
+                flex-direction: column
+                line-height: 2
+                padding-left: 2em
+                border: none
+                position: initial
+                width: calc(300px - 1em)
+
