@@ -1,0 +1,17 @@
+{
+    "CurrentWeather": {
+        "url_segments": "weather/current",
+        "request_type": "GET",
+        "description": "Get current weather for a city / town (using Open Weather API)",
+        "enableParams": true,
+        "authorization":"*"
+    },
+
+    "WeatherForecast": {
+        "url_segments": "weather/forecast",
+        "request_type": "GET",
+        "description": "Get weather forecast for a city / town (using Open Weather API)",
+        "enableParams": true,
+        "authorization":"*"
+    }
+}
