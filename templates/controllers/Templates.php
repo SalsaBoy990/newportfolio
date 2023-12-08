@@ -5,6 +5,16 @@ class Templates extends Trongate {
         load('frontpage', $data);
     }
 
+    /* This is the base template for clean framework */
+    function clean($data) {
+        load('clean/clean', $data);
+    }
+
+    /* This is the narrow template */
+    function clean_narrow($data) {
+        load('clean/clean-narrow', $data);
+    }
+
     function public($data) {
         load('public', $data);
     }
