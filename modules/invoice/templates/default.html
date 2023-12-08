@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gutenberg-css@0.6.1/dist/gutenberg.min.css">-->
+
+    <style>
+        body {
+            font-family: 'DejaVu Sans', sans;
+        }
+
+        @page {
+            margin: 100px 50px;
+        }
+
+        #header {
+            position: fixed;
+            left: -50px;
+            top: -100px;
+            right: -50px;
+            height: 100px;
+            background-color: orange;
+        }
+
+        h1 {
+            color: #006ce7;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="header">
+    <img src="{{ logo_path }}" width="60">
+</div>
+<h1>{{ title }}</h1>
+{{ content }}
+</body>
+</html>

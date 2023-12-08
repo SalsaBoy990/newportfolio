@@ -1,0 +1,9 @@
+{
+    "Repositories": {
+        "url_segments": "poll/votes",
+        "request_type": "GET",
+        "description": "Get the votes",
+        "enableParams": true,
+        "authorization":"*"
+    }
+}

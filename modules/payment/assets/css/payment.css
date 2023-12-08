@@ -1,0 +1,10 @@
+.payment .content-300 {
+    max-width: 320px;
+    width: 100%;
+}
+
+.payment .expiration-date {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+}

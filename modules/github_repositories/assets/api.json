@@ -1,0 +1,9 @@
+{
+    "Repositories": {
+        "url_segments": "github_repositories/repositories",
+        "request_type": "GET",
+        "description": "Get the top 10 GitHub repositories by language",
+        "enableParams": true,
+        "authorization":"*"
+    }
+}

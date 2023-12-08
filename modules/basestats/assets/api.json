@@ -1,0 +1,11 @@
+{
+    "Statistics": {
+        "url_segments": "basestats/stats",
+        "request_type": "GET",
+        "description": "Get array data from CSV file",
+        "enableParams": true,
+        "authorization":"*"
+    }
+
+
+}
