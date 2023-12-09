@@ -19,9 +19,9 @@ class Frontpage extends Trongate
         parent::__construct($module_name);
 
         // get translations
-        $translations = [];
+        $t = [];
         require_once __DIR__.'/../languages/'.get_language().'/front.php';
-        $this->translations = $translations;
+        $this->translations = $t;
 
         // initialize model service
         require_once __DIR__.'/../services/FrontService.php';
