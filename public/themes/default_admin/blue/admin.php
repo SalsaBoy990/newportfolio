@@ -30,7 +30,7 @@
 
     <script>
         tinymce.init({
-            selector: 'textarea#skill-content-area',
+            selector: 'textarea#link-content-area',
             plugins: 'link code table lists',
             toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | table',
             language: 'hu_HU',
