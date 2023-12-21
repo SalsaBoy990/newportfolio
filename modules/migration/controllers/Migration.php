@@ -1,9 +1,17 @@
 <?php
-
+/**
+ * A simple migration runner module for Trongate framework
+ */
 class Migration extends Trongate
 {
-    const MIGRATIONS = 'migrations';
+    /**
+     * @var MigrationService
+     */
+    private MigrationService $migration_service;
 
+    /**
+     * @param string|null $module_name
+     */
     public function __construct(?string $module_name = null)
     {
         if (strtolower(ENV) !== 'dev') {
@@ -12,10 +20,15 @@ class Migration extends Trongate
             die();
         }
         parent::__construct($module_name);
+
+        // initialize migration service
+        require_once __DIR__.'/../services/MigrationService.php';
+        $this->migration_service = new MigrationService();
     }
 
+
     /**
-     * Migration runner
+     * Migration runner (ups or downs all migrations) endpoint
      *
      * @param string $direction = 'up'|'down'
      *
@@ -26,13 +39,14 @@ class Migration extends Trongate
         settype($direction, 'string');
 
         if ($direction === 'up') {
-            if (!$this->_is_table_exists('migrations')) {
+            if (!$this->migration_service->_is_table_exists('migrations')) {
                 // Create the migrations table to store migration records
-                $this->_create_migrations_table();
+                $this->migration_service->_create_migrations_table();
             }
         }
 
         // Migration file list
+        // Migrations should be stored in the migrations folder (create it) in the root of the project
         $migrations = array_filter(glob(__DIR__ . '/../../../migrations/*.php'));
 
         if (sizeof($migrations) > 0) {
@@ -52,19 +66,19 @@ class Migration extends Trongate
                     try {
                         if ($direction === 'up') {
 
-                            $record = $this->model->get_where_custom('migration', $filename, '=', 'id',
-                                self::MIGRATIONS, 1);
+                            $record = $this->migration_service->get_where_custom('migration', $filename, '=', 'id',
+                                $this->migration_service::MIGRATIONS, 1);
 
-                            // Run migration
+                            // Run migration if it hasn't been run yet
                             if (empty($record)) {
                                 $run->up();
                                 // Insert migration record
-                                $this->_insert_migration($filename, 1);
+                                $this->migration_service->_insert_migration($filename, 1);
                             } elseif ($record[0]->processed == 0) {
-                                // Run migration
+                                // Run migration if its state is unprocessed
                                 $run->up();
-                                // update migration record
-                                $this->_update_migration($filename, 1);
+                                // Update migration record
+                                $this->migration_service->_update_migration($filename, 1);
                             }
 
                         } elseif ($direction === 'down') {
@@ -72,7 +86,7 @@ class Migration extends Trongate
                             $run->down();
 
                             // Update migration record
-                            $this->_update_migration($filename, 0);
+                            $this->migration_service->_update_migration($filename, 0);
                         }
                     } catch (\Exception $ex) {
                         var_dump($ex);
@@ -81,75 +95,6 @@ class Migration extends Trongate
             }
         }
         echo 'OK';
+        exit;
     }
-
-
-    /**
-     * Check if table needs to be created (initially)
-     *
-     * @param string $table
-     * @return bool
-     */
-    private function _is_table_exists(string $table): bool
-    {
-        $sql = "SHOW TABLES LIKE :table";
-        $rows = $this->model->query_bind($sql, ['table' => $table], 'array');
-        if (!isset($rows)) {
-            return false;
-        }
-
-        return true;
-    }
-
-
-    /**
-     * Insert migration record
-     *
-     * @param string $filename
-     * @param int $is_processed
-     *
-     * @return void
-     */
-    private function _insert_migration(string $filename, int $is_processed): void
-    {
-        $this->model->insert([
-            'migration' => $filename,
-            'processed' => $is_processed,
-        ], self::MIGRATIONS);
-    }
-
-
-    /**
-     * Update migration record
-     *
-     * @param string $filename
-     * @param int $is_processed
-     *
-     * @return void
-     */
-    private function _update_migration(string $filename, int $is_processed): void
-    {
-        $this->model->update_where('migration', $filename, [
-            'processed' => $is_processed,
-        ], self::MIGRATIONS);
-    }
-
-
-    /**
-     * Creates the migrations table if it exists
-     *
-     * @return void
-     */
-    private function _create_migrations_table(): void
-    {
-        $this->model->exec(
-            "CREATE TABLE IF NOT EXISTS `migrations` (
-                `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-                `migration` varchar(255) NOT NULL,
-                `processed` TINYINT DEFAULT 0,
-                PRIMARY KEY (`id`)
-            ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci' AUTO_INCREMENT=1;"
-        );
-    }
-
 }
