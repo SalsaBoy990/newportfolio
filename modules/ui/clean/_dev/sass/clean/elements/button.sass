@@ -243,11 +243,13 @@ a.link-button
     right: 1.5em
     bottom: 2.5em
     background-color: $gray-20
+    border-color: $gray-20
     color: $text
     z-index: 4
 
     &:hover, &:focus
         background-color: $primary-light
+        border-color: $primary-light
         color: white
 
 
@@ -318,7 +320,8 @@ button.button-circle
 
 
 @media screen and (max-width: 550px)
-    button, .button
+    button:not(.scroll-to-top-button):not(.button-circle):not(.button-square),
+    .button:not(.scroll-to-top-button):not(.button-circle):not(.button-square)
         width: 100%
         display: block
 

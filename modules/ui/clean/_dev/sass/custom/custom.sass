@@ -1,9 +1,17 @@
+@import "tomselect"
 header
     color: $white
     padding: 4px 12px
     background-color: $primary-dark
     transition: all 250ms
     box-shadow: rgba(0, 0, 0, 0.15) 0 6px 24px 0, rgba(0, 0, 0, 0.18) 0 0 0 1px
+
+    @media screen and (max-width: 1440px)
+        padding: 4px 24px
+
+    @media screen and (max-width: 992px)
+        padding: 4px 16px
+
 
     a
         color: $white
@@ -47,6 +55,9 @@ header
 
 #header-sm,
 #header-lg
+    max-width: 1400px
+    width: 100%
+    margin: 0 auto
     .logo
         display: flex
 
@@ -146,3 +157,9 @@ header
                 position: initial
                 width: calc(300px - 1em)
 
+#top-nav
+    padding-left: 0
+    padding-right: 0
+
+    li:last-child
+        margin-right: 0

@@ -1,14 +1,16 @@
 <div x-data="ajaxSearchData" x-cloak x-init="panelOpen = false; searchTerm = ''">
     <section class="banner">
-        <h1 class="h3">Section Banner</h1>
-        <p>This is a description of this section</p>
-        <div class="searchbar relative">
-            <input @keydown="searchByTitle('<?= BASE_URL ?>' + 'entries/search')" x-model="searchTerm"
-                   @click="togglePanel()" type="search"
-                   placeholder="Search in entries"/>
-            <b class="left margin-left-0-5">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </b>
+        <div class="container">
+            <h1 class="h3">Section Banner</h1>
+            <p>This is a description of this section</p>
+            <div class="searchbar relative">
+                <input @keydown="searchByTitle('<?= BASE_URL ?>' + 'entries/search')" x-model="searchTerm"
+                       @click="togglePanel()" type="search"
+                       placeholder="Search in entries"/>
+                <b class="left margin-left-0-5">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </b>
+            </div>
         </div>
     </section>
 
@@ -16,7 +18,9 @@
         <div x-cloak x-show="panelOpen" :class="{'show': panelOpen }"
              class="card white absolute padding-1 z-2 hide">
             <span @click="clearSearch()"
-                  class="close-button large topright round-large-top-right">&times;</span>
+                  class="close-button large topright round-large-top-right">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
             <h2 class="fs-16 margin-top-0" x-text="'Results (' + count + ')'"></h2>
             <div id="search-results">
                 <template x-for="item in results">
@@ -35,9 +39,6 @@
 
 
 <div x-data="{ showToc: false}" class="main-container container relative">
-    <span @click="showToc = ! showToc" class="pointer absolute padding-0-5" role="button" title="Table of content">
-        <i :class="{'fa fa-compress' : showToc,  'fa fa-expand' : !showToc }" aria-hidden="true"></i> <span class="fs-12">Table of content</span>
-    </span>
 
     <aside x-show="showToc" x-cloak x-transition class="toc">
         <h2> Table of Contents </h2>
@@ -64,14 +65,16 @@
             <li><a href="#">Definition Lists</a></li>
             <li><a href="">Tables</a></li>
             <li><a href="">Video</a></li>
-
         </ul>
     </aside>
 
     <main class="content">
+        <span @click="showToc = ! showToc" class="pointer absolute padding-0" role="button" title="Table of content">
+            <i :class="{'fa fa-compress' : !showToc,  'fa fa-expand' : showToc }" aria-hidden="true"></i>
+            <span class="fs-12">Table of content</span>
+        </span>
 
-        <h1 class="margin-top-0">Clean.CSS</h1>
-
+        <h1 class="margin-top-1">Clean.ui</h1>
 
         <h2 class="text-gray-60 semibold">COMPONENTS</h2>
 
@@ -335,7 +338,7 @@
 
         <h3>5. Box</h3>
         <p>The <a href="#">box</a> class is the most important of the
-            Clean.CSS classes. It provides equality like:</p>
+            Clean.ui classes. It provides equality like:</p>
         <ul>
             <li>Common margins</li>
             <li>Common paddings</li>
@@ -772,7 +775,7 @@
 
 
         <h3>10. Filter</h3>
-        <p>Use <a href="#">Clean.CSS Filters</a> to search for a specific element inside a list, table, dropdown,
+        <p>Use <a href="#">Clean.ui Filters</a> to search for a specific element inside a list, table, dropdown,
             etc:</p>
 
         <div x-data="filterData" x-init="dataType = 'table'; sourceId = 'filter-table';">
@@ -861,39 +864,24 @@
             <div class="half">
                 <div class="margin-bottom-1">
                     <label for="fruit">Fruits<span class="text-red">*</span></label>
-                    <select id="fruit" name="fruit"
-                            class="@error('fruit') is-invalid @enderror">
-                        <option value="0">Select fruit</option>
-                        @foreach($fruits as $fruit)
-                        <option
-                                {{ old('fruit') == $fruit ? 'selected' : ''  }} value="{{ $fruit }}">{{ $fruit }}</option>
-                        @endforeach
+                    <select id="fruit" name="fruit" placeholder="Select a fruit..." autocomplete="off">
+                        <option value="">Select a fruit...</option>
+                        <?php foreach ($fruits as $fruit) { ?>
+                            <option value="<?= $fruit ?>"><?= $fruit ?></option>
+                        <?php } ?>
                     </select>
-                    @error('fruit')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
                 </div>
 
                 <div class="margin-bottom-1">
-                    <label for="logo"
-                           class="@error('logo') is-invalid @enderror">Select logo
-                        <span class="text-danger">*</span></label>
+                    <label for="logo">Select logo<span class="text-red">*</span></label>
                     <input type="file" class="form-control-file" id="logo"
                            name="logo">
-                    @error('logo')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
                 </div>
 
                 <div class="margin-bottom-1">
-                    <label for="gallery"
-                           class="@error('gallery') is-invalid @enderror">Upload images for the gallery</label>
+                    <label for="gallery">Upload images for the gallery</label>
                     <input type="file" class="form-control-file" id="gallery"
                            name="gallery[]" multiple>
-
-                    @error('gallery')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
                 </div>
 
             </div>
@@ -984,7 +972,7 @@
 
 
         <h3>13. Image</h3>
-        <p>Styling <a href="#">images</a> in Clean.CSS is easy:</p>
+        <p>Styling <a href="#">images</a> in Clean.ui is easy:</p>
 
         <div class="row-padding">
             <div class="col m3 s4">
@@ -1021,7 +1009,9 @@
         <div x-data="lightboxData">
             <div x-show="openLighbox" class="gallery-modal black" :class="{'show': openLighbox }">
                 <span class="text-white white-transparent fs-24 hover-text-grey-20 padding-0-5 topright pointer"
-                      title="Close Lightbox" @click="closeLightbox()">&times;</span>
+                      title="Close Lightbox" @click="closeLightbox()">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
                 <div class="modal-content content-1024">
 
                     <div class="content-960 margin-left-right-auto">
@@ -1135,7 +1125,8 @@
                 <div class="modal-content content-600 card card-4 animate-top relative">
                     <div class="box primary round-top">
                         <button @click="closeModal()"
-                                class="close-button fs-18 primary topright round-top-right text-white">&times;
+                                class="close-button fs-18 primary topright round-top-right text-white">
+                            <i class="fa-solid fa-xmark"></i>
                         </button>
                         <h3 class="text-white">Header</h3>
                     </div>
@@ -1161,7 +1152,7 @@
                  @click="openModal()">
 
             <div x-show="modal" x-cloak class="modal" :class="{'show': modal}" @click="closeModal()">
-                <span class="close-button gray-20 fs-18 topright">&times;</span>
+                <span class="close-button gray-20 fs-18 topright"><i class="fa-solid fa-xmark"></i></span>
                 <div class="modal-content content-960 card card-4 animate-zoom">
                     <img src="ui-clean_module/images/img_nature_wide.jpg" alt="Nature">
                 </div>
@@ -1173,7 +1164,7 @@
 
 
         <h3>17. Pagination</h3>
-        <p>Clean.CSS provides simple ways for <a href="#">page pagination</a>.</p>
+        <p>Clean.ui provides simple ways for <a href="#">page pagination</a>.</p>
 
         <div class="bar pagination margin-top-bottom-1">
             <a class="bar-item button transparent" href="javascript:void(0)">&laquo;</a>
@@ -1280,7 +1271,7 @@
 
 
         <h3>20. Slideshow</h3>
-        <p>Clean.CSS provide <a href="#">slideshows</a> for cycling through images or
+        <p>Clean.ui provide <a href="#">slideshows</a> for cycling through images or
             other
             content:</p>
 
@@ -1406,28 +1397,31 @@
             <div id="Nature" class="picture relative tabbed-image-gallery-item">
                 <img src="ui-clean_module/images/img_nature_wide.jpg" alt="Nature">
                 <span @click="hide(event)"
-                      class="topright close-button fs-18 transparent text-white">&times;</span>
+                      class="topright close-button fs-18 transparent text-white"><i
+                            class="fa-solid fa-xmark"></i></span>
                 <div class="bottomleft box padding-0-5 text-white black-transparent">Nature</div>
             </div>
 
             <div id="Snow" class="picture relative tabbed-image-gallery-item">
                 <img src="ui-clean_module/images/img_snow_wide.jpg" alt="Snow">
                 <span @click="hide(event)"
-                      class="topright close-button fs-18 transparent text-white">&times;</span>
+                      class="topright close-button fs-18 transparent text-white"><i
+                            class="fa-solid fa-xmark"></i></span>
                 <div class="bottomleft box padding-0-5 text-white black-transparent">Snow</div>
             </div>
 
             <div id="Mountains" class="picture relative tabbed-image-gallery-item">
                 <img src="ui-clean_module/images/img_mountains_wide.jpg" alt="Mountains">
                 <span @click="hide(event)"
-                      class="topright close-button fs-18 transparent">&times;</span>
+                      class="topright close-button fs-18 transparent"><i class="fa-solid fa-xmark"></i></span>
                 <div class="bottomleft box padding-0-5 text-white black-transparent">Mountains</div>
             </div>
 
             <div id="Lights" class="picture relative tabbed-image-gallery-item">
                 <img src="ui-clean_module/images/img_lights_wide.jpg" alt="Lights">
                 <span @click="hide(event)"
-                      class="topright close-button fs-18 transparent text-white">&times;</span>
+                      class="topright close-button fs-18 transparent text-white"><i
+                            class="fa-solid fa-xmark"></i></span>
                 <div class="bottomleft box padding-0-5 text-white black-transparent">Northern Lights</div>
                 <div class="bottomleft box padding-0-5 text-white black-transparent">Northern Lights</div>
             </div>
@@ -1873,7 +1867,7 @@
 
         </div>
 
-        <p>Clean.CSS also supports a
+        <p>Clean.ui also supports a
             <a href="#">12 column mobile-first fluid grid</a>
             with small, medium, and large classes.</p>
 

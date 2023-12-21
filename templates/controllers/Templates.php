@@ -5,6 +5,11 @@ class Templates extends Trongate {
         load('frontpage', $data);
     }
 
+    /* This is the demo template for clean framework */
+    function clean_demo($data) {
+        load('clean/clean-demo', $data);
+    }
+
     /* This is the base template for clean framework */
     function clean($data) {
         load('clean/clean', $data);

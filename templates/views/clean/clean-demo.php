@@ -93,11 +93,7 @@
     </header>
 
 
-    <div class="main-container container relative">
-        <main class="content">
-            <?= Template::display($data) ?>
-        </main>
-    </div>
+    <?= Template::display($data) ?>
 
 
     <button class="light-gray scroll-to-top-button padding-0-5 round"
