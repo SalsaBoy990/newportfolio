@@ -46,7 +46,7 @@ function clean() {
 async function styles() {
     return await gulp.src(paths.styles.src)
         .pipe(sass())
-        // .pipe(cleanCSS())
+        .pipe(cleanCSS())
         // pass in options to the stream
         .pipe(rename({
             basename: 'frontpage',
