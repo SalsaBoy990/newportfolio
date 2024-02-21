@@ -41,22 +41,6 @@
             localStorage.setItem('language', newLanguage);
             oldLanguage = newLanguage;
         }
-
-        fetch('http://localhost/portfolio/localization/test', {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify({language: oldLanguage})
-        })
-            .then(function (res) {
-                console.log(res)
-            })
-            .catch(function (res) {
-                console.log(res)
-            });
-
     </script>
 
     <link rel="stylesheet" type="text/css" href="frontpage_module/css/frontpage.css">
