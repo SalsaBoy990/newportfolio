@@ -26,7 +26,7 @@ final class Weather extends Trongate
         require_once __DIR__.'/../services/WeatherService.php';
         $this->weather_service = new WeatherService();
 
-        $this->module('a-api_helper');
+        $this->module('api_helper');
     }
 
 

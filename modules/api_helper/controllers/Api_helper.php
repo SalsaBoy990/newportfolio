@@ -69,7 +69,7 @@ class Api_helper extends Trongate
         $last_char = substr($key, $str_len - 1);
 
         if ($last_char == '!') {
-            $key = $key.'=';
+            $key = $key . '=';
         }
 
         $key = $this->_remove_special_characters($key);

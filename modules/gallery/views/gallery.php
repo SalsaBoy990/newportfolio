@@ -2,7 +2,7 @@
 
     <h1>Simple Gallery</h1>
 
-    <?php flashdata('<div class="panel success">', '</div>') ?>
+    <?php flashdata('<div class="alert success">', '</div>') ?>
 
     <p>
         <a href="<?= BASE_URL . 'gallery/form' ?>">Upload image to the gallery</a>

@@ -45,13 +45,13 @@ class Gallery extends Trongate implements JsonSerializable
         $this->gallery_images = [];
 
         // Utility and validate modules ("A" children)
-        $this->module('a-utility');
-        $this->module('a-validate');
+        $this->module('utility');
+        $this->module('form_validator');
     }
 
 
     // form view to submit a new image with a title to the gallery
-    function form()
+    function form(): void
     {
         $data['view_file'] = 'form';
         $data['error_stack'] = $this->error_stack;
@@ -60,7 +60,7 @@ class Gallery extends Trongate implements JsonSerializable
     }
 
     // gallery view
-    function gallery()
+    function index(): void
     {
         // get image properties from the json file
         $this->gallery_images = $this->_read_image_data_from_file();
@@ -87,14 +87,15 @@ class Gallery extends Trongate implements JsonSerializable
         $this->template($this->template_to_use, $data);
     }
 
-    public function submit() {
+    public function submit(): void
+    {
 	    $this->module( 'trongate_security' );
 	    $this->trongate_security->_make_sure_allowed();
 
         $has_error = $this->validate_image_form();
         if ($has_error === false) {
             // remove whitespace, strip tags
-            $title = $this->validate->sanitize_text($_POST['title']);
+            $title = $this->form_validator->_sanitize_text($_POST['title']);
 
             // temp file path
             $tmp_path = $_FILES['image']['tmp_name'];
@@ -113,7 +114,7 @@ class Gallery extends Trongate implements JsonSerializable
                 }
             } catch(Exception $e) {
                 $this->error_stack[] = $e->getMessage();
-                $this->validate->set_error('Unable to save the file.');
+                $this->form_validator->_set_error('Unable to save the file.');
                 $this->form();
             }
 
@@ -123,8 +124,7 @@ class Gallery extends Trongate implements JsonSerializable
 
             $this->_save_image_data_to_file();
 
-            header('Location: ' . str_replace('/submit', '/gallery', current_url()));
-//            $this->gallery();
+            header('Location: ' . str_replace('/submit', '/index', current_url()));
         } else {
             $this->form();
         }
@@ -147,7 +147,7 @@ class Gallery extends Trongate implements JsonSerializable
             }
         } catch (Exception $e) {
             $this->error_stack[] = $e->getMessage();
-            $this->validate->set_error($e->getMessage());
+            $this->form_validator->_set_error($e->getMessage());
             return [];
         }
 
@@ -163,15 +163,15 @@ class Gallery extends Trongate implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'guid' => $this->utility->create_guid(),
+            'guid' => $this->utility->_create_guid(),
             'image_path' => $this->get_image_path(),
             'image_title' => $this->get_image_title(),
-            'upload_time' => $this->utility->create_timestamp(),
+            'upload_time' => $this->utility->_create_timestamp(),
         ];
     }
 
     // save data to JSON file
-    public function _save_image_data_to_file()
+    public function _save_image_data_to_file(): void
     {
         // add extension to filename
         $filename = dirname(__FILE__, 2).'/assets/data/'.self::FILENAME.'.json';
@@ -188,7 +188,7 @@ class Gallery extends Trongate implements JsonSerializable
                 }
             } catch (Exception $e) {
                 $this->error_stack[] = $e->getMessage();
-                $this->validate->set_error($e->getMessage());
+                $this->form_validator->_set_error($e->getMessage());
                 $this->form();
             }
 
@@ -213,7 +213,7 @@ class Gallery extends Trongate implements JsonSerializable
                 }
             } catch (Exception $e) {
                 $this->error_stack[] = $e->getMessage();
-                $this->validate->set_error($e->getMessage());
+                $this->form_validator->_set_error($e->getMessage());
                 $this->form();
             }
 
@@ -229,7 +229,7 @@ class Gallery extends Trongate implements JsonSerializable
                 $tmp = substr($tmp, 0, (strlen($tmp) - 2));
             } else {
                 $this->error_stack[] = 'Malformed json file. Check file endings ("]" in the last line)';
-                $this->validate->set_error('Malformed json file. Check file endings ("]" in the last line)');
+                $this->form_validator->_set_error('Malformed json file. Check file endings ("]" in the last line)');
                 $this->form();
                 die;
             }
@@ -250,7 +250,7 @@ class Gallery extends Trongate implements JsonSerializable
                 }
             } catch (Exception $e) {
                 $this->error_stack[] = $e->getMessage();
-                $this->validate->set_error($e->getMessage());
+                $this->form_validator->_set_error($e->getMessage());
 
                 $this->form();
                 die;
@@ -295,40 +295,40 @@ class Gallery extends Trongate implements JsonSerializable
                      */
                     switch ($error_code) {
                         case 1:
-                            $this->validate->set_error('The uploaded file exceeds the upload_max_filesize directive in php.ini.');
+                            $this->form_validator->_set_error('The uploaded file exceeds the upload_max_filesize directive in php.ini.');
                             $this->error_stack[] = 'The uploaded file exceeds the upload_max_filesize directive in php.ini.';
                             break;
                         case 2:
-                            $this->validate->set_error('The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.');
+                            $this->form_validator->_set_error('The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.');
                             $this->error_stack[] = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.';
                             break;
                         case 3:
-                            $this->validate->set_error('The uploaded file was only partially uploaded.');
+                            $this->form_validator->_set_error('The uploaded file was only partially uploaded.');
                             $this->error_stack[] = 'The uploaded file was only partially uploaded.';
                             break;
                         case 4:
-                            $this->validate->set_error('No file was uploaded.');
+                            $this->form_validator->_set_error('No file was uploaded.');
                             $this->error_stack[] = 'No file was uploaded.';
                             break;
                         case 6:
-                            $this->validate->set_error('Missing a temporary folder.');
+                            $this->form_validator->_set_error('Missing a temporary folder.');
                             $this->error_stack[] = 'Missing a temporary folder.';
                             break;
                         case 7:
-                            $this->validate->set_error('Failed to write file to disk.');
+                            $this->form_validator->_set_error('Failed to write file to disk.');
                             $this->error_stack[] = 'Failed to write file to disk.';
                             break;
                         case 8:
-                            $this->validate->set_error('A PHP extension stopped the file upload.');
+                            $this->form_validator->_set_error('A PHP extension stopped the file upload.');
                             $this->error_stack[] = 'A PHP extension stopped the file upload.';
                             break;
                         default:
-                            $this->validate->set_error('An unspecified PHP error occured.');
+                            $this->form_validator->_set_error('An unspecified PHP error occured.');
                             $this->error_stack[] = 'An unspecified PHP error occured.';
                             break;
                     }
 
-                    $this->validate->set_error('Hiba a fájl feltöltésekor. Próbáld újra.');
+                    $this->form_validator->_set_error('Hiba a fájl feltöltésekor. Próbáld újra.');
                     $this->error_stack[] = 'Hiba a fájl feltöltésekor. Próbáld újra.';
                 }
 
@@ -336,28 +336,28 @@ class Gallery extends Trongate implements JsonSerializable
                 // read the header information of the image and will fail on an invalid image.
                 if ($_FILES['image']['tmp_name'] && !@getimagesize($_FILES['image']['tmp_name'])) {
                     $has_error = true;
-                    $this->validate->set_error('A feltöltött kép érvénytelen.');
+                    $this->form_validator->_set_error('A feltöltött kép érvénytelen.');
                     $this->error_stack[] = 'A feltöltött kép érvénytelen.';
                 }
 
                 // check if filename contains illegal chars
-                if ($this->validate->is_filename_valid($_FILES['image']['name'] === false)) {
+                if ($this->form_validator->_is_filename_valid($_FILES['image']['name'] === false)) {
                     $has_error = true;
-                    $this->validate->set_error('Fájlnév nem tartalmazhat ékezetes betűket, speciális karaktereket (pl. $, [, { stb.)');
+                    $this->form_validator->_set_error('Fájlnév nem tartalmazhat ékezetes betűket, speciális karaktereket (pl. $, [, { stb.)');
                     $this->error_stack[] = 'Fájlnév nem tartalmazhat ékezetes betűket, speciális karaktereket (pl. $, [, { stb.)';
                 }
 
                 // check if filename is not too long
-                if ($this->validate->is_filename_too_long($_FILES['image']['name'] === true)) {
+                if ($this->form_validator->_is_filename_too_long($_FILES['image']['name'] === true)) {
                     $has_error = true;
-                    $this->validate->set_error('A fájlnév túl hosszú. Max. 250 karakter a megengedett hossz.');
+                    $this->form_validator->_set_error('A fájlnév túl hosszú. Max. 250 karakter a megengedett hossz.');
                     $this->error_stack[] = 'A fájlnév túl hosszú. Max. 250 karakter a megengedett hossz.';
                 }
 
                 // max 500 KB!
                 if ($_FILES['image']['size'] > 512000) {
                     $has_error = true;
-                    $this->validate->set_error('A fájl mérete nem lehet nagyobb, mint 500 KB.');
+                    $this->form_validator->_set_error('A fájl mérete nem lehet nagyobb, mint 500 KB.');
                     $this->error_stack[] = 'A fájl mérete nem lehet nagyobb, mint 500 KB.';
                 }
 
@@ -367,7 +367,7 @@ class Gallery extends Trongate implements JsonSerializable
 
                 if (!in_array($type, $this->allowed_extensions)) {
                     $has_error = true;
-                    $this->validate->set_error('A fájlnév kiterjesztése csak JPG, JPEG, PNG vagy GIF lehet.');
+                    $this->form_validator->_set_error('A fájlnév kiterjesztése csak JPG, JPEG, PNG vagy GIF lehet.');
                     $this->error_stack[] = 'A fájlnév kiterjesztése csak JPG, JPEG, PNG vagy GIF lehet.';
                 }
 
@@ -383,12 +383,12 @@ class Gallery extends Trongate implements JsonSerializable
                 // there is a minimal chance of filename duplication, but unlikely after randomization
                 if (file_exists($gallery_folder_path . $_FILES['image']['name'])) {
                     $has_error = true;
-                    $this->validate->set_error('Ilyen nevű fájl már létezik. Próbáld újra feltölteni.');
+                    $this->form_validator->_set_error('Ilyen nevű fájl már létezik. Próbáld újra feltölteni.');
                     $this->error_stack[] = 'Ilyen nevű fájl már létezik. Próbáld újra feltölteni.';
                 }
             } else {
                 $has_error = true;
-                $this->validate->set_error('Nem adtál meg képet a feltöltéshez.');
+                $this->form_validator->_set_error('Nem adtál meg képet a feltöltéshez.');
                 $this->error_stack[] = 'Nem adtál meg képet a feltöltéshez.';
             }
 
@@ -396,7 +396,7 @@ class Gallery extends Trongate implements JsonSerializable
             // check title input
             if (empty($_POST['title'])) {
                 $has_error = true;
-                $this->validate->set_error('Nem adtál címet a képnek.');
+                $this->form_validator->_set_error('Nem adtál címet a képnek.');
                 $this->error_stack[] = 'Nem adtál címet a képnek.';
             }
 

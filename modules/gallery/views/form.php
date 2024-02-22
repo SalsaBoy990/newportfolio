@@ -2,7 +2,7 @@
 
 <h2>Képfeltöltés</h2>
 
-<?= Modules::run('a-validate/_validation_errors') ?>
+<?= Modules::run('form_validator/_validation_errors') ?>
 
 <?php
 
@@ -21,4 +21,4 @@ echo form_close();
 
 <hr>
 
-<?php Modules::run('a-validate/_clear_validation_errors'); ?>
+<?php Modules::run('form_validator/_clear_validation_errors'); ?>

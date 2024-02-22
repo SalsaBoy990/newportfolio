@@ -55,8 +55,8 @@ final class Payment extends Trongate
         $this->email_address = '';
 
         // Validate module (child)
-        $this->module('a-validate');
-        $this->module('a-api_helper');
+        $this->module('form_validator');
+        $this->module('api_helper');
 
     }
 
@@ -93,7 +93,7 @@ final class Payment extends Trongate
     private function _get_data_from_post(): array
     {
 
-        $data = $this->validate->_get_data_from_post(self::INPUT_FIELDS);
+        $data = $this->form_validator->_get_data_from_post(self::INPUT_FIELDS);
 
         $month = post('month', true);
         $data['month'] = $month < 10 ? '0'.$month : $month;
@@ -151,14 +151,14 @@ final class Payment extends Trongate
 
 
             // validate card number (Luhn algorithm)
-            $this->validate->_validate_card_number($card);
+            $this->form_validator->_validate_card_number($card);
 
             // validate month in MM format
-            $this->validate->_validate_expiration_month();
+            $this->form_validator->_validate_expiration_month();
 
 
             // expiration validation
-            $this->validate->_validate_card_expiration();
+            $this->form_validator->_validate_card_expiration();
 
 
             // this is a workaround to be able to have custom validations that are not part of the framework
@@ -215,7 +215,7 @@ final class Payment extends Trongate
             // convert HUF -> USD -> EUR (example)
             $this->converted_amount = $this->amount / $currency_rates->{$this->from_currency} * $currency_rates->{$this->to_currency};
         } catch (Exception $ex) {
-            $this->validate->set_error($ex->getMessage());
+            $this->form_validator->_set_error($ex->getMessage());
             $this->form();
         }
     }

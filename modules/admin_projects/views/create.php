@@ -18,7 +18,7 @@
 
         echo form_label('Content');
         echo form_textarea('content', $content,
-            array("placeholder" => "Enter Content", "id" => "project-content-area"));
+            array("placeholder" => "Enter Content", "id" => "post-content-area"));
 
         echo form_label('Links');
         echo form_textarea('links', $links, array("placeholder" => "Enter Links", "id" => "project-link-content-area"));

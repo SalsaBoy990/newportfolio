@@ -51,7 +51,7 @@ class WeatherService
      */
     public function __construct()
     {
-        require_once dirname(__DIR__, 2).'/a/api_helper/controllers/Api_helper.php';
+        require_once dirname(__DIR__, 2).'/api_helper/controllers/Api_helper.php';
         $this->api_helper = new Api_helper();
 
 

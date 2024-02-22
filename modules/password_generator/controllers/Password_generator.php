@@ -20,6 +20,8 @@ final class Password_generator extends Trongate
 
         require_once __DIR__.'/../services/PasswordService.php';
         $this->password_service = new PasswordService();
+
+        $this->module('api_helper');
     }
 
 
@@ -41,7 +43,7 @@ final class Password_generator extends Trongate
     {
         api_auth();
 
-        $this->module('a-api_helper');
+        $this->module('api_helper');
         $params = $this->api_helper->_get_params_from_url(3);
 
         extract($params);

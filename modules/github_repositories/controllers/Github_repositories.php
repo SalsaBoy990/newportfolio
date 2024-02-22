@@ -34,7 +34,7 @@ final class Github_repositories extends Trongate
     {
         api_auth();
 
-        $this->module('a-api_helper');
+        $this->module('api_helper');
         $params = $this->api_helper->_get_params_from_url(3);
 
         extract($params);

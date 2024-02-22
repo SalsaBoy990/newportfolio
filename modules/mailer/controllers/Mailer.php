@@ -37,11 +37,11 @@ class Mailer extends Trongate
 //        $this->mailer->Username = '';
 //        $this->mailer->Password = '';
 
-        $this->module('a-validate');
+        $this->module('form_validator');
     }
 
 
-    function contact()
+    function contact(): void
     {
 
         $data = $this->_get_data_from_post();
@@ -51,14 +51,15 @@ class Mailer extends Trongate
         $this->template($this->template_to_use, $data);
     }
 
-    function thanks() {
+    function thanks(): void
+    {
         $data['view_file'] = 'thanks';
 
         $this->template($this->template_to_use, $data);
     }
 
 
-    function submit()
+    function submit(): void
     {
 
         $submit = post('submit');
@@ -110,7 +111,7 @@ class Mailer extends Trongate
 
     private function _get_data_from_post()
     {
-        return $this->validate->_get_data_from_post(self::INPUT_FIELDS);
+        return $this->form_validator->_get_data_from_post(self::INPUT_FIELDS);
     }
 
     private function _configure_phpmailer()
