@@ -208,7 +208,7 @@
 <!-- Main action buttons -->
 <div class="action-buttons-above-footer">
     <nav>
-        <a href="<?= MY_CV_LINK ?>" download class="download-link">
+        <a href="<?= MY_CV_LINK ?>" download class="button download-link">
             <svg class="margin-right-0-5" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_672_923)">
                     <path d="M17.4163 8.25H13.7497V2.75H8.24967V8.25H4.58301L10.9997 14.6667L17.4163 8.25ZM4.58301 16.5V18.3333H17.4163V16.5H4.58301Z"
@@ -222,7 +222,7 @@
             </svg>
             <span><?= $text_download ?></span>
         </a>
-        <a href="mailto:<?= $email_address ?>" class="contact-link">
+        <a href="mailto:<?= $email_address ?>" class="button contact-link">
             <svg class="margin-right-0-5" aria-hidden="true" focusable="false" viewBox="0 0 22 22" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_672_926)">
