@@ -17,3 +17,13 @@
 html.dark
     ::-webkit-scrollbar-track
         background: $gray-40
+
+pre
+    display: flex
+    overflow-x: scroll
+
+    &::-webkit-scrollbar
+        height: 6px
+
+    &::-webkit-scrollbar-thumb
+        background: $primary-light

@@ -320,8 +320,12 @@ button.button-circle
 
 
 @media screen and (max-width: 550px)
-    button:not(.scroll-to-top-button):not(.button-circle):not(.button-square),
-    .button:not(.scroll-to-top-button):not(.button-circle):not(.button-square)
+    button:not(.scroll-to-top-button):not(.button-circle):not(.button-square):not(.darkmode-toggle):not(.event-list-widget--search-button):not(.close-button),
+    .button:not(.scroll-to-top-button):not(.button-circle):not(.button-square):not(.darkmode-toggle):not(.event-list-widget--search-button):not(.close-button)
         width: 100%
         display: block
+
+    .accordion
+        button
+            display: flex !important
 
