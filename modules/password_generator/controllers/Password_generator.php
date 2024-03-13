@@ -29,6 +29,8 @@ final class Password_generator extends Trongate
     function index()
     {
         $data['view_file'] = 'index';
+        $data['title'] = 'Password generator';
+        $data['description'] = 'Password generator';
         $this->template($this->template_to_use, $data);
     }
 

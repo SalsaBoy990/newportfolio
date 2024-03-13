@@ -72,6 +72,9 @@ final class Payment extends Trongate
         $data['form_location'] = str_replace('/form', '/submit', current_url());
         $data['currency_options'] = $this->_get_currency_options($data['currency_id']);
 
+        $data['title'] = 'Payment';
+        $data['description'] = 'Payment';
+
 
         $this->template($this->template_to_use, $data);
     }
