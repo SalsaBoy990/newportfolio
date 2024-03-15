@@ -120,7 +120,7 @@
 
     <div class="greeting-box">
 
-        <img src="frontpage_module/images/andras.gulacsi.png" alt="András Gulácsi's profile photo">
+        <img src="frontpage_module/images/andras-gulacsi-profile-2024.png" alt="András Gulácsi's profile photo">
 
         <div class="introduction-text">
             <h2><?= $text_greeting ?></h2>

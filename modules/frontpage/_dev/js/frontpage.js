@@ -14,7 +14,7 @@ window.ready(function () {
     var scrollToTopBtn = document.getElementById("scroll-to-top");
     scrollToTopBtn.addEventListener("click", function () {
         console.log(this);
-        window.scrollTo({
+        document.body.scrollTo({
             top: 0,
             behavior: "smooth",
         });
