@@ -14,8 +14,6 @@
     <!-- Prism code syntax highlight styles -->
     <link rel="stylesheet" type="text/css" href="ui-clean_module/css/prism.css">
 
-    <!-- Clean file dropzone styles -->
-    <link href="ui-clean_module/library/clean-dropzone/dist/css/clean-dropzone.css" rel="stylesheet">
 
     <!-- Font Awesome icons -->
     <link href="<?= BASE_URL ?>assets/fontawesome-6.4.0/css/fontawesome.css" rel="stylesheet">
@@ -27,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="gallery_module/css/gallery.css">
 
     <!-- Clean file dropzone styles -->
-    <link href="<?= BASE_URL ?>assets/clean-dropzone/dist/css/clean-dropzone.css" rel="stylesheet">
+    <link href="ui-clean_module/library/clean-dropzone/dist/css/clean-dropzone.css" rel="stylesheet">
 
     <title><?= $title . ' | ' ?><?= WEBSITE_NAME ?></title>
 

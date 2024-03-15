@@ -85,8 +85,8 @@
         <div class="accordion" x-data="accordionData">
 
             <button @click="toggleAccordion('accordionOne')" aria-controls="accordionOne" type="button"
-                    class="fs-16 block left-align accordion-button">
-                <span>Open Section 1</span><i class="fa-solid fa-plus"></i>
+                    class="fs-16 flex left-align accordion-button">
+                <span>Open Section 1</span><i class="fa-solid fa-minus"></i>
             </button>
             <div id="accordionOne" :aria-expanded="isAccordionContentExpanded('accordionOne')"
                  class="hide accordion-item show">
@@ -425,7 +425,7 @@
 
         <p>Left-aligned breadcrumb</p>
 
-        <nav class="breadcrumb">
+        <nav class="breadcrumb breadcrumb-left">
             <ol>
                 <li>
                     <a href="#">
@@ -478,7 +478,7 @@
 &lt;p&gt;Center-aligned breadcrumb&lt;/p&gt;
 
 &lt;nav class=&quot;breadcrumb breadcrumb-center&quot;&gt;
-    &lt;ol class=&quot;breadcrumb-center&quot;&gt;
+    &lt;ol&gt;
         &lt;li&gt;
             &lt;a href=&quot;#&quot;&gt;
                 &lt;i class=&quot;fa fa-home&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
@@ -1002,7 +1002,7 @@
         <hr>
 
 
-        <h3>14. Lightbox</h3>
+        <h3>14. Lightbox (deprecated)</h3>
         <p>Combine <a href="#">Modals</a> and <a href="#">Slideshows</a> to create a
             lightbox
             (modal image gallery):</p>
@@ -1270,7 +1270,7 @@
         <hr>
 
 
-        <h3>20. Slideshow</h3>
+        <h3>20. Slideshow (deprecated)</h3>
         <p>Clean.ui provide <a href="#">slideshows</a> for cycling through images or
             other
             content:</p>
@@ -1362,7 +1362,7 @@
 
         <br>
 
-        <p>Tabbed Image Gallery (Click on one of the pictures):</p>
+        <p>Tabbed Image Gallery (Click on one of the pictures) (deprecated):</p>
 
         <div x-data="tabbedImagesData">
             <div class="row-padding">

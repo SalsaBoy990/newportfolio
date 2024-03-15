@@ -26,9 +26,6 @@
     <!-- Gallery module styles -->
     <link rel="stylesheet" type="text/css" href="gallery_module/css/gallery.css">
 
-    <!-- Clean file dropzone styles -->
-    <link href="<?= BASE_URL ?>assets/clean-dropzone/dist/css/clean-dropzone.css" rel="stylesheet">
-
     <title><?= $title . ' | ' ?><?= WEBSITE_NAME ?></title>
 
     <?= Template::partial('partials/public/meta', $data) ?>
@@ -76,7 +73,11 @@
             </div>
             <div>
                 <ul id="top-nav">
-                    <?= Template::partial('partials/public/main-nav') ?>
+                    <li><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="<?= BASE_URL ?>"><i class="fa fa-lightbulb"></i> About Us</a></li>
+                    <li><a href="<?= BASE_URL ?>"><i class="fa fa-street-view"></i> Our Values</a></li>
+                    <li><a href="<?= BASE_URL ?>"><i class="fa fa-gears"></i> How We Work</a></li>
+                    <li><a href="<?= BASE_URL ?>"><i class="fa fa-envelope"></i> Get In Touch</a></li>
 
                     <li>
                         <button class="icon-button darkmode-toggle"

@@ -5,6 +5,7 @@ html, body
     line-height: 1.5
     scroll-behavior: smooth
     overflow-x: hidden
+    height: 100%
 
 
 body
@@ -36,3 +37,13 @@ p
 @for $i from 1 through 10
     .z-#{$i}
         z-index: $i
+
+
+.sr-only
+    clip: rect(0 0 0 0)
+    clip-path: inset(50%)
+    height: 1px
+    overflow: hidden
+    position: absolute
+    white-space: nowrap
+    width: 1px
