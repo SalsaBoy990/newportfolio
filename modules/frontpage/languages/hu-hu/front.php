@@ -2,7 +2,7 @@
 
 /* general */
 $t['text_name']             = 'Gulácsi András';
-$t['text_title']            = 'Fullstack PHP fejlesztő vagyok,';
+$t['text_title']            = 'Fullstack PHP/JS fejlesztő vagyok,';
 $t['text_subtitle']         = 'landing oldalakat, vállalati weboldalakat, webshopokat és egyedi webappokat készítek.';
 $t['text_greeting']         = 'Üdvözöllek, Gulácsi András vagyok.';
 $t['text_introduction']     = '5 év webfejlesztői tapasztalattal rendelkezem, 2019 óta készítek másoknak weboldalakat. Távmunkában / irodában, alkalmazottként / egyéni vállalkozóként is dolgoztam mind frontend, mind backend szerepkörben.';

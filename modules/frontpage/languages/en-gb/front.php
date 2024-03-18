@@ -2,7 +2,7 @@
 
 /* general */
 $t['text_name']             = 'András Gulácsi';
-$t['text_title']            = 'I am a fullstack PHP developer';
+$t['text_title']            = 'I am a fullstack PHP/JS developer';
 $t['text_subtitle']         = 'Who creates landing pages, corporate websites, e-commerce stores and custom applications';
 $t['text_greeting']         = 'Hi, I am András Gulácsi. Nice to meet you.';
 $t['text_introduction']     = 'I have 5 years of experience as a web developer; I have been creating websites for others since 2019. I worked remotely / on-site, as employee / freelancer in both frontend, and backend roles.';
