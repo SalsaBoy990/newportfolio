@@ -7,4 +7,6 @@
     <li><?= anchor('admin_skills/manage', '<i class="fa fa-certificate" aria-hidden="true"></i> Manage Skills') ?></li>
 
     <li><?= anchor('admin_projects/manage', '<i class="fa fa-briefcase" aria-hidden="true"></i> Manage Projects') ?></li>
+
+    <li><?= anchor('entries/manage', '<i class="fa fa-book"></i> Manage Entries') ?></li>
 </ul>

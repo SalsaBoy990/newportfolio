@@ -4,20 +4,6 @@
 * */
 export function ajaxSearchData() {
 
-    const config = {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
-        mode: 'same-origin', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-            // 'Content-Type': 'application/json'
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        // body: JSON.stringify({}) // body data type must match "Content-Type" header
-    };
-
     // https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
     const stripTagsRegex =  new RegExp('(<([^>]+)>)', 'ig');
 
@@ -26,6 +12,15 @@ export function ajaxSearchData() {
         panelOpen: false,
         count: 0,
         results: [],
+
+        init() {
+            this.searchTerm = '';
+            this.$watch('searchTerm', val => {
+                if (val !== '') {
+                    this.searchByTitle('http://localhost/portfolio/entries/search');
+                }
+            });
+        },
 
         searchByTitle(apiPath) {
 
@@ -36,11 +31,21 @@ export function ajaxSearchData() {
                 const queryParams = new URLSearchParams(args);*/
 
                 // Send request to the api endpoint
-                fetch(apiPath + '/' + this.searchTerm, config)
+                fetch(apiPath + '/', {
+                    method: "POST", // *GET, POST, PUT, DELETE, etc.
+                    mode: "same-origin", // no-cors, *cors, same-origin
+                    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: "same-origin", // include, *same-origin, omit
+                    headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    redirect: "follow", // manual, *follow, error
+                    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    body: JSON.stringify({ searchTerm: this.searchTerm}), // body data type must match "Content-Type" header
+                })
                     .then((response) => response.json())
                     .then((data) => {
-                        console.log(data);
-
                         if (!data) {
                             return;
                         }

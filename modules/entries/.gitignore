@@ -1,0 +1,7 @@
+/vendor/
+composer.lock
+/assets/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/
+/assets/htmlpurifier/*
+!/assets/htmlpurifier/.gitkeep
+/assets/tinymce/*
+!/assets/tinymce/.gitkeep

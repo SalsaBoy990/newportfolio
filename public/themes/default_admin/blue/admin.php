@@ -41,6 +41,20 @@
             skin: 'oxide',
             content_css: 'default'
         });
+
+
+        tinymce.init({
+            selector: 'textarea#content',
+            plugins: 'link code table lists',
+            toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | table',
+            language: 'hu_HU',
+            directionality: 'ltr',
+            height: 360,
+            browser_spellcheck: true,
+            forced_root_block: '',
+            skin: 'oxide',
+            content_css: 'default'
+        });
     </script>
 </head>
 <body>

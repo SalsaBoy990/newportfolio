@@ -4,8 +4,9 @@
             <h1 class="h3">Section Banner</h1>
             <p>This is a description of this section</p>
             <div class="searchbar relative">
+                <!-- https://github.com/alpinejs/alpine/discussions/2505 -->
                 <input @keydown="searchByTitle('<?= BASE_URL ?>' + 'entries/search')" x-model="searchTerm"
-                       @click="togglePanel()" type="search"
+                       @click="togglePanel()" @pageshow.window="searchTerm = $el.value" type="search"
                        placeholder="Search in entries"/>
                 <b class="left margin-left-0-5">
                     <i class="fa fa-search" aria-hidden="true"></i>
