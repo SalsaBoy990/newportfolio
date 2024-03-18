@@ -20,6 +20,8 @@ class MyPages
             'GitHub Repo Search by Language Module' => 'github_repositories',
             'Simple Mail Send'                      => 'mailer/contact',
             'Fake Payment Module'                   => 'payment/form',
+            'Guitar Module'                         => 'guitar/information',
+            'Blogpost entries Module'               => 'entries',
         ];
     }
 
